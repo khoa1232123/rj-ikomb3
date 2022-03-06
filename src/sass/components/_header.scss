@@ -1,0 +1,83 @@
+.header {
+  @include flex(center, space-between);
+  height: var(--height-header);
+  padding: 0 60px;
+  position: absolute;
+  top: 0;
+  width: 100%;
+
+  &__left,
+  &__right {
+    @include flex(center, space-between);
+  }
+
+  &__left {
+    .iko-btn {
+      border: 0px;
+      padding-left: 0;
+      padding-right: 30px;
+    }
+  }
+
+  &__center {
+    width: 100%;
+    margin-right: 30px;
+  }
+
+  &__search {
+    position: relative;
+    > i {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      left: 12px;
+    }
+
+    .iko-input {
+      margin-bottom: 0;
+
+      &__input {
+        padding-left: 40px;
+        border-radius: 50px;
+        border: none;
+        background-color: var(--transparent-black-1);
+      }
+    }
+  }
+
+  &__right {
+    .iko-btn {
+      color: var(--dark);
+      padding: 0;
+      width: 40px;
+      text-align: center;
+      border-radius: 50px;
+      background-color: var(--transparent-black-1);
+      ~ .iko-btn {
+        margin-left: 10px;
+      }
+    }
+  }
+}
+
+.menu {
+  &__item {
+    a {
+      display: block;
+      padding: 10px 15px;
+      color: var(--dark);
+      border-left: 3px solid transparent;
+      &.active {
+        background-color: var(--transparent-black-3);
+        border-left-color: var(--blue);
+      }
+
+      &:hover {
+        color: var(--blue);
+      }
+    }
+    i {
+      margin-right: 10px;
+    }
+  }
+}

@@ -1,0 +1,47 @@
+.layout {
+  &__wrapper {
+    height: 100vh;
+    overflow: hidden;
+
+    .layout {
+      &__left,
+      &__center,
+      &__right {
+        padding: 0;
+      }
+    }
+  }
+
+  &__top {
+    height: calc(100% - var(--height-footer));
+  }
+
+  &__left {
+    height: 100%;
+    padding: 0;
+    background-color: var(--transparent-black-1);
+  }
+
+  &__center {
+    @include scrollbar();
+    padding: 0;
+    position: relative;
+  }
+
+  &__right {
+    height: 100%; //calc(100% - var(--height-footer));
+    border-left: 1px solid var(--transparent-black-3);
+  }
+
+  &__bottom {
+    height: var(--height-footer);
+    border-top: 1px solid var(--transparent-black-3);
+  }
+}
+
+.main-content {
+  margin-top: var(--height-header);
+  padding-top: 20px;
+  padding-left: 60px;
+  padding-right: 60px;
+}

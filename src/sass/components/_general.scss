@@ -1,0 +1,40 @@
+.container-fluid {
+  padding: 0 var(--iko-col);
+}
+
+.darkmode {
+  --dark: #f1f1f1;
+  --light: #170f23;
+  background-color: var(--light);
+}
+@mixin scrollbar() {
+  overflow: hidden overlay;
+
+  &::-webkit-scrollbar {
+    display: none;
+    transition: 300ms;
+  }
+
+  &:hover::-webkit-scrollbar {
+    display: block;
+    width: 4px;
+    transition: 300ms;
+  }
+
+  /* Track */
+  &::-webkit-scrollbar-track {
+    border-radius: 10px;
+    background: transparent;
+  }
+
+  /* Handle */
+  &::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background: #888;
+  }
+
+  /* Handle on hover */
+  &::-webkit-scrollbar-thumb:hover {
+    background: #555;
+  }
+}

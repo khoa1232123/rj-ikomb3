@@ -1,0 +1,32 @@
+.iko-accordion {
+  &__header {
+    @include flex(center, space-between);
+    padding: 10px 0;
+    font-size: 30px;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    border-bottom: 1px solid var(--gray-dark);
+    cursor: pointer;
+    color: var(--black);
+  }
+
+  &__icon i {
+    transition: 300ms;
+  }
+
+  &__content {
+    font-size: 20px;
+    max-height: 0;
+    overflow: hidden;
+    transition: 500ms;
+    color: var(--black);
+  }
+
+  &__item.active &__content {
+    max-height: 100px;
+  }
+
+  &__item.active &__icon i {
+    transform: rotate(180deg);
+  }
+}

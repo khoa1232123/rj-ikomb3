@@ -1,0 +1,59 @@
+.container {
+  width: 100%;
+  max-width: 1240px;
+  padding: 0 var(--iko-col);
+  margin: 0 auto;
+
+  @include tablet {
+    max-width: 960px;
+  }
+
+  &-fluid {
+    max-width: 100%;
+    padding: 0 60px;
+
+    @include tablet {
+      padding: 0 30px;
+    }
+
+    @include mobile {
+      padding: 0 15px;
+    }
+  }
+}
+
+.iko-row {
+  display: flex;
+  flex-wrap: wrap;
+  margin-left: var(--iko-row);
+  margin-right: var(--iko-row);
+
+  > *[class|="iko-col"] {
+    padding-left: var(--iko-col);
+    padding-right: var(--iko-col);
+  }
+
+  > .iko-col {
+    flex: 1;
+    padding-left: var(--iko-col);
+    padding-right: var(--iko-col);
+  }
+  @each $val in $numbers {
+    > .iko-col-#{$val} {
+      flex: 0 0 calc(100% / (12 / $val));
+      width: calc(100% / (12 / $val));
+    }
+    > .iko-col-md-#{$val} {
+      @include tablet {
+        flex: 0 0 calc(100% / (12 / $val));
+        width: calc(100% / (12 / $val));
+      }
+    }
+    > .iko-col-sm-#{$val} {
+      @include mobile {
+        flex: 0 0 calc(100% / (12 / $val));
+        width: calc(100% / (12 / $val));
+      }
+    }
+  }
+}

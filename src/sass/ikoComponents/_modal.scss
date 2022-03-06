@@ -1,0 +1,45 @@
+.iko-modal {
+  opacity: 0;
+  visibility: hidden;
+  transition: 300ms;
+
+  &.active {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  &__container {
+    width: 500px;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: var(--white);
+    border: 1px solid var(--light);
+    border-radius: 5px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+
+  &__mark {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.2);
+  }
+  &__close {
+    position: absolute;
+    top: -15px;
+    right: -15px;
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    line-height: 30px;
+    background: var(--red);
+    border-radius: 50%;
+    color: #fff;
+    cursor: pointer;
+  }
+}

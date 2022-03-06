@@ -1,0 +1,112 @@
+.iko-input {
+  position: relative;
+  margin-bottom: 25px;
+
+  &__label {
+    margin-bottom: 5px;
+    font-size: 14px;
+    display: block;
+
+    &__effect {
+      display: inline;
+      position: absolute;
+      font-size: 16px;
+      top: 10px;
+      left: 7px;
+      transition: 300ms;
+      padding: 0 3px;
+      opacity: 0.7;
+      z-index: -1;
+    }
+  }
+  &__input {
+    display: block;
+    width: 100%;
+    height: 40px;
+    border: 1px solid;
+    color: var(--dark);
+    border-radius: 4px;
+    font-size: 16px;
+    padding: 0 10px;
+    background-color: transparent;
+    transition: 300ms;
+    outline: none;
+  }
+
+  input:not(:placeholder-shown),
+  input:focus {
+    + .iko-input__label__effect {
+      top: -10px;
+      font-size: 14px;
+      background-color: var(--white);
+      opacity: 1;
+      z-index: 1;
+    }
+  }
+
+  &-lg {
+    .iko-input__label__effect {
+      top: 12px;
+      font-size: 18px;
+      left: 9px;
+    }
+    input {
+      height: 45px;
+      padding: 0 12px;
+      font-size: 18px;
+
+      &:not(:placeholder-shown),
+      &:focus {
+        + .iko-input__label__effect {
+          top: -11px;
+          font-size: 16px;
+          background-color: var(--white);
+        }
+      }
+    }
+  }
+
+  &-md {
+    .iko-input__label__effect {
+      top: 9px;
+      font-size: 14px;
+      left: 6px;
+    }
+    input {
+      height: 36px;
+      padding: 0 8px;
+      font-size: 14px;
+
+      &:not(:placeholder-shown),
+      &:focus {
+        + .iko-input__label__effect {
+          top: -7px;
+          font-size: 12px;
+          background-color: var(--white);
+        }
+      }
+    }
+  }
+
+  &-sm {
+    .iko-input__label__effect {
+      top: 8px;
+      font-size: 12px;
+      left: 4px;
+    }
+    input {
+      height: 32px;
+      padding: 0 6px;
+      font-size: 12px;
+
+      &:not(:placeholder-shown),
+      &:focus {
+        + .iko-input__label__effect {
+          top: -6px;
+          font-size: 10px;
+          background-color: var(--white);
+        }
+      }
+    }
+  }
+}

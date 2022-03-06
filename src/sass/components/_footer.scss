@@ -1,0 +1,135 @@
+.footer {
+  height: 100%;
+  @include flex(center, space-between);
+
+  &__left,
+  &__right {
+    width: 25%;
+  }
+}
+.media {
+  @include flex(center, flex-start);
+  &__thumbnail {
+    width: 64px;
+    height: 64px;
+    border-radius: 5px;
+    overflow: hidden;
+    margin-right: 10px;
+
+    img {
+      height: 100%;
+      width: 100%;
+      object-fit: cover;
+    }
+  }
+  .iko-btn {
+    color: var(--dark);
+    background-color: transparent;
+    margin-right: 5px;
+    width: 36px;
+    padding: 0;
+    text-align: center;
+    border-radius: 50px;
+
+    &:hover {
+      background-color: var(--transparent-black-3);
+    }
+  }
+}
+
+.input-slider {
+  width: 100%;
+  -webkit-appearance: none;
+  height: 6px;
+  outline: none;
+  opacity: 0.7;
+  -webkit-transition: 0.2s;
+  transition: opacity 0.2s;
+  display: block;
+
+  &::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 8px;
+    height: 8px;
+    background-color: #e75576; //var(--green);
+    cursor: pointer;
+  }
+}
+
+.player-control {
+  width: 700px;
+
+  &__top,
+  &__bottom {
+    @include flex(center, center);
+    flex-direction: row;
+  }
+
+  &__top {
+    height: 50px;
+  }
+
+  &__slider {
+    width: 100%;
+    input {
+      width: 100%;
+    }
+  }
+
+  &__time {
+    width: 50px;
+    text-align: center;
+  }
+
+  .iko-btn {
+    color: var(--dark);
+    background-color: transparent;
+    padding: 0;
+    text-align: center;
+    border-radius: 50px;
+    width: 36px;
+    height: 36px;
+
+    &.btn-play {
+      width: 40px;
+      height: 40px;
+      border: 1px solid;
+
+      &:hover {
+        background-color: transparent;
+        color: var(--blue);
+      }
+    }
+
+    ~ .iko-btn {
+      margin-left: 10px;
+    }
+
+    &:hover {
+      background-color: var(--transparent-black-3);
+    }
+  }
+
+  &__right {
+    @include flex(center, flex-end);
+
+    .iko-btn {
+      color: var(--dark);
+      background-color: transparent;
+      margin-right: 5px;
+      width: 36px;
+      padding: 0;
+      text-align: center;
+      border-radius: 50px;
+
+      &:hover {
+        background-color: var(--transparent-black-3);
+      }
+    }
+  }
+
+  &__volume {
+    @include flex(center, center);
+  }
+}

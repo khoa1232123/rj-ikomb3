@@ -1,0 +1,34 @@
+.iko-checkbox {
+  cursor: pointer;
+
+  input {
+    opacity: 0;
+    visibility: hidden;
+    display: none;
+  }
+
+  &__checkmark {
+    border: 2px solid var(--dark);
+    width: 20px;
+    height: 20px;
+    display: inline-block;
+    text-align: center;
+    line-height: 20px;
+    margin-right: 10px;
+    border-radius: 3px;
+    i {
+      transform: scale(0);
+      transition: transform 300ms;
+      font-size: 18px;
+    }
+  }
+
+  input:checked ~ &__checkmark {
+    border-color: var(--blue);
+  }
+
+  input:checked ~ &__checkmark > i {
+    transform: scale(1);
+    color: var(--blue);
+  }
+}

@@ -1,0 +1,123 @@
+.sidebar-left {
+  height: 100%;
+  --height-menu: 215px;
+  --height-bottom: 50px;
+  position: relative;
+
+  .logo {
+    height: var(--height-header);
+    line-height: var(--height-header);
+    font-size: 32px;
+    font-weight: 900;
+    padding: 0 15px;
+    -webkit-text-stroke: 1px #fff;
+    text-shadow: 0px 0px 5px #000;
+
+    &__i {
+      color: var(--blue);
+    }
+    &__k {
+      color: var(--green);
+    }
+    &__o {
+      color: var(--orange);
+    }
+    &__mb3 {
+      color: var(--dark);
+      font-size: 65%;
+      -webkit-text-stroke: 0px;
+      text-shadow: none;
+    }
+  }
+
+  &__menu {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    position: relative;
+    &:after {
+      position: absolute;
+      bottom: 0;
+      transform: translateX(-50%);
+      left: 50%;
+      display: block;
+      width: 80%;
+      height: 1px;
+      content: "";
+      background-color: var(--transparent-black-3);
+    }
+  }
+  &__submenu {
+    @include scrollbar();
+    padding-top: 10px;
+    padding-bottom: 10px;
+    height: calc(
+      100% - var(--height-header) - var(--height-menu) - var(--height-bottom)
+    );
+  }
+
+  &__bottom {
+    border-top: 1px solid var(--transparent-black-3);
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: var(--height-bottom);
+
+    .iko-btn {
+      width: 100%;
+      height: var(--height-bottom);
+      border-radius: 0;
+      background-color: transparent;
+      color: var(--dark);
+    }
+  }
+}
+
+.sidebar-right {
+  height: 100%;
+
+  &__header {
+    @include flex(center, space-between);
+    height: var(--height-header);
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+  &__tabs {
+    .tab-bar {
+      @include flex(center, center);
+      font-size: 12px;
+      padding: 3px;
+      background-color: var(--transparent-black-1);
+      border-radius: 50px;
+      &__item {
+        padding: 7px 20px;
+        border-radius: 50px;
+        &.active {
+          background-color: var(--transparent-black-3);
+        }
+      }
+    }
+  }
+  &__button {
+    @include flex(center, center);
+
+    .iko-btn {
+      color: var(--dark);
+      background-color: var(--transparent-black-1);
+      padding: 0;
+      width: 36px;
+      text-align: center;
+      border-radius: 50px;
+
+      ~ .iko-btn {
+        margin-left: 10px;
+      }
+    }
+  }
+
+  &__content {
+    height: calc(100% - var(--height-header));
+    @include scrollbar();
+  }
+}
