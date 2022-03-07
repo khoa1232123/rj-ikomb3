@@ -9,7 +9,7 @@ const SidebarRight = () => {
       <div className="sidebar-right__header">
         <div className="sidebar-right__tabs">
           <div className="tab-bar">
-            <div className="tab-bar__item">Danh sách phát</div>
+            <div className="tab-bar__item active">Danh sách phát</div>
             <div className="tab-bar__item">Nghe gần đây</div>
           </div>
         </div>
