@@ -23,9 +23,9 @@
   }
 
   &__center {
-    @include scrollbar();
     padding: 0;
     position: relative;
+    height: 100%;
   }
 
   &__right {
@@ -44,4 +44,16 @@
   padding-top: 20px;
   padding-left: 60px;
   padding-right: 60px;
+  @include scrollbar();
+  height: calc(100% - var(--height-header));
+
+  @include tablet {
+    padding-left: 30px;
+    padding-right: 30px;
+  }
+
+  @include mobile {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
 }

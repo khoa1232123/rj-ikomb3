@@ -43,17 +43,51 @@
       flex: 0 0 calc(100% / (12 / $val));
       width: calc(100% / (12 / $val));
     }
+  }
+  @each $val in $numbers {
     > .iko-col-md-#{$val} {
       @include tablet {
         flex: 0 0 calc(100% / (12 / $val));
         width: calc(100% / (12 / $val));
       }
     }
+  }
+  @each $val in $numbers {
     > .iko-col-sm-#{$val} {
       @include mobile {
         flex: 0 0 calc(100% / (12 / $val));
         width: calc(100% / (12 / $val));
       }
+    }
+  }
+}
+
+.container,
+.container-fluid {
+  .d-none {
+    display: none;
+  }
+
+  .d-block {
+    display: block;
+  }
+
+  @include tablet {
+    .md-none {
+      display: none;
+    }
+    .md-block {
+      display: block;
+    }
+  }
+
+  @include mobile {
+    .sm-none {
+      display: none;
+    }
+
+    .sm-block {
+      display: block;
     }
   }
 }

@@ -1,12 +1,83 @@
 .media-list {
-  padding: 0 10px;
+  &.media-style-2 {
+    @include flex(flex-start, space-between);
+
+    .media-item {
+      flex: 1;
+      display: block;
+
+      &:hover {
+        background-color: transparent;
+      }
+
+      &.active {
+        background-color: transparent;
+      }
+
+      &__thumbnail {
+        width: 100%;
+        height: 100%;
+        margin-right: 0;
+        margin-bottom: 10px;
+        img {
+          transition: 300ms;
+        }
+        &:hover > img {
+          transform: scale(1.1);
+        }
+      }
+
+      &__name {
+        margin-bottom: 5px;
+      }
+
+      &__content {
+        flex-direction: column;
+        @include flex(flex-start, flex-start);
+      }
+
+      &__actions {
+        @include flex(center, center);
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        transition: 300ms;
+
+        &:hover {
+          background-color: var(--transparent-white-3);
+        }
+
+        .iko-btn {
+          height: 36px;
+
+          img {
+            width: 50%;
+            height: 50%;
+            margin: auto;
+          }
+
+          &:not(.iko-btn-md) {
+            height: 42px;
+            width: 42px;
+          }
+        }
+      }
+    }
+  }
 }
 .media-item {
   padding: 5px;
   border-radius: 5px;
   @include flex(center, space-between);
+  transition: 300ms;
+
   &:hover {
     background-color: var(--transparent-black-1);
+    .media-item__actions {
+      display: flex;
+    }
 
     .media-item__thumbnail {
       .iko-btn {
@@ -27,6 +98,7 @@
   &__thumbnail {
     width: 40px;
     height: 40px;
+    min-width: 40px;
     border-radius: 4px;
     overflow: hidden;
     margin-right: 10px;
@@ -38,7 +110,7 @@
       object-fit: cover;
     }
 
-    .iko-btn {
+    > .iko-btn {
       opacity: 0;
       position: absolute;
       width: 100%;
@@ -74,5 +146,23 @@
 
   &__actions {
     @include flex(center, center);
+    display: none;
+
+    .iko-btn {
+      color: var(--dark);
+      background-color: transparent;
+      width: 36px;
+      padding: 0;
+      text-align: center;
+      border-radius: 50px;
+
+      ~ .iko-btn {
+        margin-left: 5px;
+      }
+
+      &:hover {
+        background-color: var(--transparent-black-3);
+      }
+    }
   }
 }

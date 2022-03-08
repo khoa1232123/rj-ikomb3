@@ -6,6 +6,14 @@
   top: 0;
   width: 100%;
 
+  @include tablet {
+    padding: 0 30px;
+  }
+
+  @include mobile {
+    padding: 0 15px;
+  }
+
   &__left,
   &__right {
     @include flex(center, space-between);
@@ -16,12 +24,15 @@
       border: 0px;
       padding-left: 0;
       padding-right: 30px;
+
+      @include tablet {
+        padding-right: 15px;
+      }
     }
   }
 
   &__center {
     width: 100%;
-    margin-right: 30px;
   }
 
   &__search {
@@ -46,6 +57,12 @@
   }
 
   &__right {
+    margin-left: 30px;
+
+    @include tablet {
+      margin-left: 15px;
+    }
+
     .iko-btn {
       color: var(--dark);
       padding: 0;
@@ -71,12 +88,22 @@
         background-color: var(--transparent-black-3);
         border-left-color: var(--blue);
       }
+      span {
+        margin-left: 5px;
+      }
 
       &:hover {
         color: var(--blue);
       }
+
+      @include tablet {
+        text-align: center;
+        span {
+          display: none;
+        }
+      }
     }
-    i {
+    span {
       margin-right: 10px;
     }
   }

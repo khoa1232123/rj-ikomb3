@@ -12,6 +12,10 @@
     padding: 0 15px;
     -webkit-text-stroke: 1px #fff;
     text-shadow: 0px 0px 5px #000;
+    @include tablet {
+      text-align: center;
+      padding: 0 5px;
+    }
 
     &__i {
       color: var(--blue);
@@ -27,6 +31,10 @@
       font-size: 65%;
       -webkit-text-stroke: 0px;
       text-shadow: none;
+
+      @include tablet {
+        display: none;
+      }
     }
   }
 
@@ -69,6 +77,10 @@
       border-radius: 0;
       background-color: transparent;
       color: var(--dark);
+
+      @include tablet {
+        text-align: center;
+      }
     }
   }
 }
@@ -91,8 +103,10 @@
       background-color: var(--transparent-black-1);
       border-radius: 50px;
       &__item {
-        padding: 7px 20px;
+        padding: 7px 15px;
         border-radius: 50px;
+        cursor: pointer;
+
         &.active {
           background-color: var(--transparent-black-3);
         }
@@ -117,6 +131,7 @@
   }
 
   &__content {
+    padding: 0 10px;
     height: calc(100% - var(--height-header));
     @include scrollbar();
   }

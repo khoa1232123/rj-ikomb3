@@ -24,6 +24,11 @@ export const songDataSlice = createSlice({
       }
       state.playing = true;
     },
+    nextRandomSong: (state, action) => {
+      let rand = Math.floor(Math.random() * getAllSongs().length);
+      state.song = getAllSongs()[rand];
+      state.playing = true;
+    },
     prevSong: (state, action) => {
       const index = getAllSongs().indexOf(action.payload);
       if (index <= 0) {
@@ -36,7 +41,7 @@ export const songDataSlice = createSlice({
   },
 });
 
-export const { getSongById, setPlaying, nextSong, prevSong } =
+export const { getSongById, setPlaying, nextSong, prevSong, nextRandomSong } =
   songDataSlice.actions;
 
 export default songDataSlice.reducer;

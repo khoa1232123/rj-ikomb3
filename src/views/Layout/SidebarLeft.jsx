@@ -22,7 +22,8 @@ const SidebarLeft = () => {
       </div>
       <div className="sidebar-left__bottom">
         <IkoButton>
-          <i className="fa-solid fa-plus"></i> Tạo playlist mới
+          <i className="fa-solid fa-plus"></i>{" "}
+          <span className="md-none">Tạo playlist mới</span>
         </IkoButton>
       </div>
     </div>

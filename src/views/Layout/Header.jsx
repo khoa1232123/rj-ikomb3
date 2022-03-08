@@ -18,7 +18,7 @@ const Header = () => {
           <IkoInput placeholder="Nhập tên bài hát, nghệ sĩ hoặc MV..." />
         </div>
       </div>
-      <div className="header__right">
+      <div className="header__right sm-none">
         <IkoButton>
           <i className="fa-solid fa-circle-half-stroke"></i>
         </IkoButton>

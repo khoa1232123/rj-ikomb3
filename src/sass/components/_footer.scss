@@ -12,6 +12,7 @@
   &__thumbnail {
     width: 64px;
     height: 64px;
+    min-width: 64px;
     border-radius: 5px;
     overflow: hidden;
     margin-right: 10px;
@@ -22,14 +23,34 @@
       object-fit: cover;
     }
   }
+  &__name {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    line-clamp: 1;
+    -webkit-box-orient: vertical;
+    font-size: 14px;
+  }
+  &__author {
+    font-size: 12px;
+    opacity: 0.6;
+  }
+
+  &__actions {
+    @include flex(center, center);
+  }
   .iko-btn {
     color: var(--dark);
     background-color: transparent;
-    margin-right: 5px;
     width: 36px;
     padding: 0;
     text-align: center;
     border-radius: 50px;
+
+    ~ .iko-btn {
+      margin-left: 5px;
+    }
 
     &:hover {
       background-color: var(--transparent-black-3);
@@ -58,8 +79,6 @@
 }
 
 .player-control {
-  width: 700px;
-
   &__top,
   &__bottom {
     @include flex(center, center);
@@ -91,6 +110,10 @@
     width: 36px;
     height: 36px;
 
+    &.active {
+      color: var(--blue);
+    }
+
     &.btn-play {
       width: 40px;
       height: 40px;
@@ -119,6 +142,7 @@
       background-color: transparent;
       margin-right: 5px;
       width: 36px;
+      min-width: 36px;
       padding: 0;
       text-align: center;
       border-radius: 50px;

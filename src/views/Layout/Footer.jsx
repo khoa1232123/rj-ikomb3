@@ -1,13 +1,22 @@
 import React, { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { IkoButton } from "../../ikoComponents";
-import { nextSong, prevSong, setPlaying } from "../../redux/song/songSlice";
+import ProgressBar from "../../components/ProgressBar";
+import { IkoButton, IkoCol, IkoRow } from "../../ikoComponents";
+import {
+  nextRandomSong,
+  nextSong,
+  prevSong,
+  setPlaying,
+} from "../../redux/song/songSlice";
 import { formatTime } from "../../utils";
 
 const Footer = () => {
   const dispatch = useDispatch();
   const { song, playing } = useSelector((state) => state.songData);
+
+  const [heart, setHeart] = useState(false);
+  const [playRandom, setPlayRandom] = useState(false);
 
   const [duration, setDuration] = useState(0);
   const [seekTime, setSeekTime] = useState(0); // forces player to update its time
@@ -53,56 +62,52 @@ const Footer = () => {
     audioRef.current.muted = muted;
   }, [muted]);
 
-  useEffect(() => {
-    console.log("aaa");
-    if (audioRef.current.ended) {
-      dispatch(nextSong());
-      console.log("ddd");
+  const handleClickNext = () => {
+    if (playRandom) {
+      dispatch(nextRandomSong());
+    } else {
+      dispatch(nextSong(song));
     }
-  }, [dispatch, song]);
-
-  if (audioRef.current !== null) {
-    audioRef.current.onended = () => {
-      console.log("check reload");
-      if (reload) {
-        console.log("reload true");
-        audioRef.current.currentTime = true;
-        audioRef.current.play();
-      } else {
-        console.log("next song");
-        dispatch(nextSong(song));
-      }
-    };
-  }
+  };
 
   useEffect(() => {
     if (audioRef.current !== null) {
       audioRef.current.load = reload;
-      audioRef.current.onended = () => {
-        dispatch(nextSong(song));
-      };
+      if (playRandom) {
+        audioRef.current.onended = () => {
+          dispatch(nextRandomSong(song));
+        };
+      } else {
+        audioRef.current.onended = () => {
+          dispatch(nextSong(song));
+        };
+      }
     }
-  }, [dispatch, reload, song]);
+  }, [dispatch, playRandom, reload, song]);
 
   return (
-    <div className="footer">
-      <div className="footer__left">
+    <IkoRow className="footer">
+      <IkoCol col={3} className="footer__left md-none">
         {Object.keys(song).length !== 0 && (
           <div className="media">
             <div className="media__thumbnail">
               <img src={song.links && song.links.images[1].url} alt="" />
             </div>
             <div className="media__content">
-              <div className="media__title">
+              <div className="media__name">
                 <Link to={"/"}>{song.name}</Link>
               </div>
-              <div className="media__singer">
+              <div className="media__author">
                 <Link to={"/"}>{song.author}</Link>
               </div>
             </div>
             <div className="media__actions">
-              <IkoButton size="md">
-                <i className="fa-solid fa-heart"></i>
+              <IkoButton size="md" onClick={() => setHeart(!heart)}>
+                {heart ? (
+                  <i className="fa-solid fa-heart"></i>
+                ) : (
+                  <i className="fa-regular fa-heart"></i>
+                )}
               </IkoButton>
               <IkoButton size="md">
                 <i className="fa-solid fa-ellipsis"></i>
@@ -110,12 +115,15 @@ const Footer = () => {
             </div>
           </div>
         )}
-      </div>
-      <div className="footer__center">
+      </IkoCol>
+      <IkoCol col={6} mdCol={12} className="footer__center">
         <div className="player-control">
           <div className="player-control__top">
             <div className="player-control__bar">
-              <IkoButton>
+              <IkoButton
+                onClick={() => setPlayRandom(!playRandom)}
+                className={playRandom ? "active" : ""}
+              >
                 <i className="fa-solid fa-shuffle"></i>
               </IkoButton>
               <IkoButton onClick={() => dispatch(prevSong(song))}>
@@ -126,7 +134,7 @@ const Footer = () => {
                   className={playing ? "fa-solid fa-pause" : "fa-solid fa-play"}
                 ></i>
               </IkoButton>
-              <IkoButton onClick={() => dispatch(nextSong(song))}>
+              <IkoButton onClick={() => handleClickNext()}>
                 <i className="fa-solid fa-forward-step"></i>
               </IkoButton>
               <IkoButton
@@ -142,14 +150,10 @@ const Footer = () => {
               {formatTime(appTime)}
             </div>
             <div className="player-control__slider">
-              <input
-                type="range"
-                step="any"
+              <ProgressBar
                 value={appTime}
-                min={0}
                 max={duration}
-                onInput={(e) => setSeekTime(e.target.value)}
-                className="input-slider"
+                onInput={setSeekTime}
               />
               <audio
                 src={song.url}
@@ -163,8 +167,8 @@ const Footer = () => {
             </div>
           </div>
         </div>
-      </div>
-      <div className="footer__right">
+      </IkoCol>
+      <IkoCol col={3} className="footer__right md-none">
         <div className="player-control__right">
           <IkoButton size="md">
             <i className="fa-solid fa-photo-film"></i>
@@ -190,19 +194,15 @@ const Footer = () => {
                 <i className="fa-solid fa-volume-xmark"></i>
               )}
             </IkoButton>
-            <input
-              type="range"
+            <ProgressBar
               value={!muted ? volume : 0}
-              step={1}
-              min={0}
               max={100}
-              className="input-slider"
-              onChange={(e) => setVolume(e.target.value)}
+              onInput={setVolume}
             />
           </div>
         </div>
-      </div>
-    </div>
+      </IkoCol>
+    </IkoRow>
   );
 };
 
