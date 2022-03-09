@@ -2,9 +2,14 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import iconPlaying from "../assets/imgs/icon-playing.gif";
 import { IkoButton } from "../ikoComponents";
-import { getSongById, setPlaying } from "../redux/song/songSlice";
+import {
+  getSongById,
+  removeFavoriteSong,
+  setFavoriteSong,
+  setPlaying,
+} from "../redux/song/songSlice";
 
-const MediaItem = ({ song, style }) => {
+const MediaItem = ({ song, styleName }) => {
   const dispatch = useDispatch();
 
   const [heart, setHeart] = useState(false);
@@ -19,14 +24,24 @@ const MediaItem = ({ song, style }) => {
     }
   };
 
+  const handleClickHeart = () => {
+    console.log("abc");
+    dispatch(setFavoriteSong(song));
+    if (!heart) {
+    } else {
+      dispatch(removeFavoriteSong(song));
+    }
+    setHeart(!heart);
+  };
+
   return (
     <div className={`media-item ${currentSong.id === song.id ? "active" : ""}`}>
       <div className="media-item__content">
         <div className="media-item__thumbnail">
           <img src={song.links.images[1].url} alt="" />
-          {style === 2 ? (
+          {styleName === 2 ? (
             <div className="media-item__actions">
-              <IkoButton size="md" onClick={() => setHeart(!heart)}>
+              <IkoButton size="md" onClick={() => handleClickHeart()}>
                 {heart ? (
                   <i className="fa-solid fa-heart"></i>
                 ) : (
@@ -59,9 +74,9 @@ const MediaItem = ({ song, style }) => {
           <div className="media-item__author">{song.author}</div>
         </div>
       </div>
-      {style !== 2 && (
+      {styleName !== 2 && (
         <div className="media-item__actions">
-          <IkoButton size="md" onClick={() => setHeart(!heart)}>
+          <IkoButton size="md" onClick={() => handleClickHeart()}>
             {heart ? (
               <i className="fa-solid fa-heart"></i>
             ) : (

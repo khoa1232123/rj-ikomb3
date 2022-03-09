@@ -1,3 +1,7 @@
+const favoriteSongs = localStorage.getItem("favoriteSongs")
+  ? JSON.parse(localStorage.getItem("favoriteSongs"))
+  : [];
+
 export const formatTime = (time) => {
   const t = new Date(time * 1000);
   t.getMinutes();
@@ -11,4 +15,8 @@ export const formatTime = (time) => {
     convertTime += ":0" + t.getSeconds();
   }
   return convertTime;
+};
+
+export const checkFavoriteSong = (song) => {
+  // let index = favoriteSongs.find()
 };

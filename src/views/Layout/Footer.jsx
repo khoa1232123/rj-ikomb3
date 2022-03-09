@@ -13,7 +13,7 @@ import { formatTime } from "../../utils";
 
 const Footer = () => {
   const dispatch = useDispatch();
-  const { song, playing } = useSelector((state) => state.songData);
+  const { songs, song, playing } = useSelector((state) => state.songData);
 
   const [heart, setHeart] = useState(false);
   const [playRandom, setPlayRandom] = useState(false);
@@ -64,9 +64,11 @@ const Footer = () => {
 
   const handleClickNext = () => {
     if (playRandom) {
-      dispatch(nextRandomSong());
+      let index = Math.floor(Math.random() * songs.length);
+      dispatch(nextRandomSong(index));
     } else {
-      dispatch(nextSong(song));
+      let index = songs.indexOf(song);
+      dispatch(nextSong(index));
     }
   };
 

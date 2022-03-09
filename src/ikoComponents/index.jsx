@@ -6,3 +6,4 @@ export { default as IkoInput } from "./IkoInput";
 export { default as Title } from "./Title";
 export { default as IkoAccordion } from "./IkoAccordion";
 export { default as IkoTitle } from "./IkoTitle";
+export { default as IkoSlider } from "./IkoSlider";

@@ -1,0 +1,65 @@
+.iko-slider {
+  position: relative;
+
+  &__content {
+    @include flex(center, center);
+    position: relative;
+    height: 230px;
+  }
+
+  &__item {
+    position: absolute;
+    height: auto;
+    transform: scale(0.1) translateX(0);
+    transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out,
+      z-index 0s linear 0.25s;
+    width: 33.33%;
+    z-index: 0;
+    opacity: 0;
+    padding: 15px;
+    height: 100%;
+
+    div {
+      border-radius: 8px;
+      overflow: hidden;
+      height: 100%;
+    }
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    &__1 {
+      transform: translateX(-100%);
+      opacity: 1;
+      z-index: 1;
+    }
+
+    &__2 {
+      transform: translateX(0);
+      opacity: 1;
+      z-index: 5;
+    }
+    &__3 {
+      transform: translateX(100%);
+      opacity: 1;
+      z-index: 1;
+    }
+  }
+
+  &__prev,
+  &__next {
+    position: absolute;
+    top: 50%;
+    z-index: 15;
+    transform: translateY(-50%);
+    left: 0;
+  }
+
+  &__next {
+    left: auto;
+    right: 0;
+  }
+}

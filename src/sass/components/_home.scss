@@ -1,0 +1,35 @@
+.home__iko-slider {
+  margin-left: -15px;
+  margin-right: -15px;
+  .iko-btn {
+    opacity: 0;
+    background-color: var(--transparent-black-1);
+    border-radius: 50%;
+    color: var(--white);
+    width: 50px;
+    height: 50px;
+    text-align: center;
+    font-size: 18px;
+
+    &:hover {
+      background-color: var(--transparent-black-3);
+    }
+  }
+
+  &:hover .iko-btn {
+    opacity: 1;
+  }
+}
+
+.home__media-list {
+  margin-top: 40px;
+
+  .media-list {
+    margin-left: -10px;
+    margin-right: -10px;
+  }
+
+  .media-item {
+    padding: 10px;
+  }
+}

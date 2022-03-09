@@ -1,10 +1,23 @@
 import React, { useState } from "react";
 import MediaList from "../../components/MediaList";
 import { IkoButton } from "../../ikoComponents";
-import songs from "../../data/songs.json";
+import { useDispatch, useSelector } from "react-redux";
+import { getAllSongAgain, getSongs } from "../../redux/song/songSlice";
 
 const SidebarRight = () => {
+  const dispatch = useDispatch();
+  const { songs, recentSongs } = useSelector((state) => state.songData);
   const [tab, setTab] = useState(1);
+
+  const handleClickPlaying = () => {
+    dispatch(getAllSongAgain());
+    setTab(1);
+  };
+
+  const handleClickRecent = () => {
+    dispatch(getSongs(recentSongs));
+    setTab(2);
+  };
 
   return (
     <div className="sidebar-right">
@@ -13,13 +26,13 @@ const SidebarRight = () => {
           <div className="tab-bar">
             <div
               className={`tab-bar__item ${tab === 1 ? "active" : ""}`}
-              onClick={() => setTab(1)}
+              onClick={() => handleClickPlaying()}
             >
               Danh sách phát
             </div>
             <div
               className={`tab-bar__item ${tab === 2 ? "active" : ""}`}
-              onClick={() => setTab(2)}
+              onClick={() => handleClickRecent()}
             >
               Nghe gần đây
             </div>
