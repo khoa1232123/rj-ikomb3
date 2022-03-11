@@ -2,12 +2,12 @@ export const menu = [
   {
     icon: "fa-solid fa-music",
     label: "Cá Nhân",
-    url: "/",
+    url: "/ca-nhan",
   },
   {
     icon: "fa-solid fa-record-vinyl",
     label: "Khám Phá",
-    url: "/kham-pha",
+    url: "/",
   },
   {
     icon: "fa-solid fa-chart-line",

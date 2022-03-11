@@ -75,17 +75,20 @@ const Footer = () => {
   useEffect(() => {
     if (audioRef.current !== null) {
       audioRef.current.load = reload;
+      console.log("abc");
       if (playRandom) {
         audioRef.current.onended = () => {
-          dispatch(nextRandomSong(song));
+          let index = Math.floor(Math.random() * songs.length);
+          dispatch(nextRandomSong(index));
         };
       } else {
         audioRef.current.onended = () => {
-          dispatch(nextSong(song));
+          let index = songs.indexOf(song);
+          dispatch(nextSong(index));
         };
       }
     }
-  }, [dispatch, playRandom, reload, song]);
+  }, [dispatch, playRandom, reload, song, songs]);
 
   return (
     <IkoRow className="footer">

@@ -62,4 +62,31 @@
     left: auto;
     right: 0;
   }
+
+  &.style-2 {
+    .iko-slider {
+      &__item {
+        right: 0;
+        width: 230px;
+        height: 230px;
+
+        &__1 {
+          transform: scale(0.8) translateX(-20%);
+          opacity: 0.8;
+          z-index: 1;
+        }
+
+        &__2 {
+          transform: scale(0.9) translateX(-10%);
+          opacity: 1;
+          z-index: 5;
+        }
+        &__3 {
+          transform: translateX(0%);
+          opacity: 1;
+          z-index: 10;
+        }
+      }
+    }
+  }
 }

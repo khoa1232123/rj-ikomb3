@@ -1,6 +1,6 @@
 import { HashRouter, Route, Routes } from "react-router-dom";
 import "./App.css";
-import Home from "./views/Home";
+import { Home, Personal } from "./views";
 import Layout from "./views/Layout";
 
 function App() {
@@ -10,6 +10,7 @@ function App() {
         <Layout>
           <Routes>
             <Route path="/" element={<Home />} />
+            <Route path="/ca-nhan" element={<Personal />} />
           </Routes>
         </Layout>
       </HashRouter>

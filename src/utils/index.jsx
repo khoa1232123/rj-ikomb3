@@ -18,5 +18,11 @@ export const formatTime = (time) => {
 };
 
 export const checkFavoriteSong = (song) => {
-  // let index = favoriteSongs.find()
+  let index = favoriteSongs.find((fa) => fa.id === song.id);
+
+  if (index) {
+    return true;
+  } else {
+    return false;
+  }
 };

@@ -1,9 +1,15 @@
 import React, { useEffect, useLayoutEffect, useRef } from "react";
 import { IkoButton } from ".";
 
-const IkoSlider = ({ children }) => {
+const IkoSlider = ({ children, className }) => {
   const sliderRef = useRef(null);
   const sliderContentRef = useRef(null);
+
+  let txtClass = "iko-slider";
+
+  if (className) {
+    txtClass += " " + className;
+  }
 
   useLayoutEffect(() => {
     setTimeout(() => {
@@ -70,7 +76,7 @@ const IkoSlider = ({ children }) => {
 
   return (
     <div>
-      <div className="iko-slider" ref={sliderRef}>
+      <div className={txtClass} ref={sliderRef}>
         <div className="iko-slider__content" ref={sliderContentRef}>
           {children}
         </div>

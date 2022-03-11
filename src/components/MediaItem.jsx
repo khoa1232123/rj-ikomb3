@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import iconPlaying from "../assets/imgs/icon-playing.gif";
 import { IkoButton } from "../ikoComponents";
@@ -8,11 +8,16 @@ import {
   setFavoriteSong,
   setPlaying,
 } from "../redux/song/songSlice";
+import { checkFavoriteSong } from "../utils";
 
 const MediaItem = ({ song, styleName }) => {
   const dispatch = useDispatch();
 
   const [heart, setHeart] = useState(false);
+
+  useEffect(() => {
+    setHeart(checkFavoriteSong(song));
+  }, [song]);
 
   const { song: currentSong, playing } = useSelector((state) => state.songData);
   const handleClickThumb = () => {
