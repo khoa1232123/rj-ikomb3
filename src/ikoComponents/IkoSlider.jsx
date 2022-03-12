@@ -25,29 +25,35 @@ const IkoSlider = ({ children, className }) => {
   }, []);
 
   const nextSlider = () => {
-    const slider = sliderContentRef.current.children;
-    for (const slide of slider) {
-      for (let i = 1; i <= slider.length; i++) {
-        if (slide.classList.contains(`iko-slider__item__1`)) {
-          slide.classList.replace(
-            `iko-slider__item__1`,
-            `iko-slider__item__${slider.length}`
-          );
-          break;
-        }
-        if (slide.classList.contains(`iko-slider__item__${i}`)) {
-          slide.classList.replace(
-            `iko-slider__item__${i}`,
-            `iko-slider__item__${i - 1}`
-          );
-          break;
+    const slider = sliderContentRef.current
+      ? sliderContentRef.current.children
+      : {};
+    if (slider.length) {
+      for (const slide of slider) {
+        for (let i = 1; i <= slider.length; i++) {
+          if (slide.classList.contains(`iko-slider__item__1`)) {
+            slide.classList.replace(
+              `iko-slider__item__1`,
+              `iko-slider__item__${slider.length}`
+            );
+            break;
+          }
+          if (slide.classList.contains(`iko-slider__item__${i}`)) {
+            slide.classList.replace(
+              `iko-slider__item__${i}`,
+              `iko-slider__item__${i - 1}`
+            );
+            break;
+          }
         }
       }
     }
   };
 
   const prevSlider = () => {
-    const slider = sliderContentRef.current.children;
+    const slider = sliderContentRef.current
+      ? sliderContentRef.current.children
+      : {};
     for (const slide of slider) {
       for (let i = 1; i <= slider.length; i++) {
         if (slide.classList.contains(`iko-slider__item__${i}`)) {

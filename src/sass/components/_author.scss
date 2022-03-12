@@ -1,0 +1,32 @@
+.author-list {
+  display: flex;
+  .author-item {
+    text-align: center;
+    padding: 0 10px;
+    &__thumbnail {
+      height: 150px;
+      width: 150px;
+      overflow: hidden;
+      border-radius: 50%;
+      margin-bottom: 20px;
+
+      img {
+        transition: 300ms;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    }
+
+    &__name {
+      text-align: center;
+    }
+
+    &:hover {
+      img {
+        transform: scale(1.1);
+        opacity: 0.8;
+      }
+    }
+  }
+}

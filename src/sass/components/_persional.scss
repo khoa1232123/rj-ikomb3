@@ -1,0 +1,34 @@
+.persional {
+  &__header {
+    &__avatar {
+      margin-bottom: 20px;
+      img {
+        margin: auto;
+        width: auto;
+        border-radius: 50%;
+      }
+    }
+  }
+
+  &__media-list {
+    @include scrollbar();
+    height: 230px;
+
+    .media-item {
+      border-radius: 3px;
+      border-bottom: 1px solid var(--transparent-black-3);
+      &__actions {
+        display: flex;
+      }
+    }
+  }
+
+  &__tab-bar {
+    @include flex(center, center);
+
+    .tab-bar__item {
+      padding: 8px 25px;
+      text-transform: uppercase;
+    }
+  }
+}

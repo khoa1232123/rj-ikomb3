@@ -92,3 +92,20 @@
     }
   }
 }
+
+.tab-bar {
+  @include flex(center, center);
+  font-size: 12px;
+  padding: 3px;
+  background-color: var(--transparent-black-1);
+  border-radius: 50px;
+  &__item {
+    padding: 7px 15px;
+    border-radius: 50px;
+    cursor: pointer;
+
+    &.active {
+      background-color: var(--transparent-black-3);
+    }
+  }
+}

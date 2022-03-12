@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 import iconPlaying from "../assets/imgs/icon-playing.gif";
+import { getAuthorByName } from "../data/dataAuthors";
 import { IkoButton } from "../ikoComponents";
 import {
   getSongById,
@@ -14,9 +16,11 @@ const MediaItem = ({ song, styleName }) => {
   const dispatch = useDispatch();
 
   const [heart, setHeart] = useState(false);
+  const [author, setAuthor] = useState({});
 
   useEffect(() => {
     setHeart(checkFavoriteSong(song));
+    setAuthor(getAuthorByName(song.author));
   }, [song]);
 
   const { song: currentSong, playing } = useSelector((state) => state.songData);
@@ -30,7 +34,6 @@ const MediaItem = ({ song, styleName }) => {
   };
 
   const handleClickHeart = () => {
-    console.log("abc");
     dispatch(setFavoriteSong(song));
     if (!heart) {
     } else {
@@ -76,7 +79,11 @@ const MediaItem = ({ song, styleName }) => {
         </div>
         <div className="media-item__info">
           <div className="media-item__name">{song.name}</div>
-          <div className="media-item__author">{song.author}</div>
+          <div className="media-item__author">
+            <Link to={`/author/${author && author.id ? author.id : ""}`}>
+              {song.author}
+            </Link>
+          </div>
         </div>
       </div>
       {styleName !== 2 && (

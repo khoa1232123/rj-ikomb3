@@ -4,7 +4,13 @@ const getAllAuthors = () => authors;
 
 export { authors, getAllAuthors };
 export const getAuthorById = (id) => {
-  getAllAuthors().find((author) => author.id === id);
+  return getAllAuthors().find((author) => author.id === id);
+};
+
+export const getAuthorByName = (name) => {
+  return getAllAuthors().find((author) => {
+    return author.name.includes(name) || name.includes(author.name);
+  });
 };
 
 export const getRandomAuthors = (count) => {

@@ -4,11 +4,11 @@ const getAllSongs = () => songs;
 
 export { songs, getAllSongs };
 export const getSongById = (id) => {
-  getAllSongs().find((song) => song.id === id);
+  return getAllSongs().find((song) => song.id === id);
 };
 
 export const getSongByAuthor = (author) => {
-  getAllSongs().filter((song) => song.author.includes(author));
+  return getAllSongs().filter((song) => song.author.includes(author));
 };
 
 export const getRandomSongs = (count) => {

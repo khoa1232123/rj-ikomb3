@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import { MediaList } from "../components";
+import AuthorList from "../components/AuthorList";
 import { getRandomAuthors } from "../data/dataAuthors";
 import { getRandomSongs } from "../data/dataSongs";
 import { IkoSlider, IkoTitle } from "../ikoComponents";
@@ -19,7 +21,9 @@ const Home = () => {
             {authors.map((item, index) => (
               <div className="iko-slider__item" key={index}>
                 <div>
-                  <img src={item.url} alt="" />
+                  <Link to={`/author/${item.id}`} aria-label={item.name}>
+                    <img src={item.url} alt={item.name} />
+                  </Link>
                 </div>
               </div>
             ))}
@@ -29,6 +33,9 @@ const Home = () => {
       <div className="home__media-list">
         <IkoTitle>Nhạc mới mỗi ngày</IkoTitle>
         <MediaList songs={getRandomSongs(5)} styleName={2} />
+      </div>
+      <div className="home__media-list">
+        <AuthorList />
       </div>
       <div className="home__media-list">
         <IkoTitle>Nhạc mới mỗi ngày</IkoTitle>

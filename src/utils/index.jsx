@@ -26,3 +26,17 @@ export const checkFavoriteSong = (song) => {
     return false;
   }
 };
+
+export const filterAuthor = (songs) => {
+  let newSongs = [];
+  songs.forEach((item, index) => {
+    const {
+      author,
+      links: { img },
+    } = item;
+
+    newSongs.push({ author, url: img[0].url });
+  });
+
+  return newSongs;
+};
