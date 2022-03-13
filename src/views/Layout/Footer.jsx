@@ -75,7 +75,6 @@ const Footer = () => {
   useEffect(() => {
     if (audioRef.current !== null) {
       audioRef.current.load = reload;
-      console.log("abc");
       if (playRandom) {
         audioRef.current.onended = () => {
           let index = Math.floor(Math.random() * songs.length);

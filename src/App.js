@@ -3,9 +3,11 @@ import "./App.css";
 import { Home, Personal, Updatingting } from "./views";
 import AuthorDetail from "./views/AuthorDetail";
 import Layout from "./views/Layout";
+import Search from "./views/Search";
 
 function App() {
   document.title = "Iko - mb3";
+
   return (
     <div className="App">
       <HashRouter>
@@ -15,6 +17,7 @@ function App() {
             <Route path="/ca-nhan/*" element={<Personal />} />
             <Route path="/chart" element={<Updatingting />} />
             <Route path="/radio" element={<Updatingting />} />
+            <Route path="/search" element={<Search />} />
             <Route path="/theo-doi" element={<Updatingting />} />
             <Route path="/author/:id" element={<AuthorDetail />} />
             <Route path="/nhac-moi" element={<Updatingting />} />

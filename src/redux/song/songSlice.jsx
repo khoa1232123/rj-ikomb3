@@ -5,8 +5,6 @@ let favoriteSongs = localStorage.getItem("favoriteSongs")
   ? JSON.parse(localStorage.getItem("favoriteSongs"))
   : [];
 
-console.log(favoriteSongs);
-
 export const songDataSlice = createSlice({
   name: "songData",
   initialState: {
@@ -15,6 +13,8 @@ export const songDataSlice = createSlice({
     playing: false,
     recentSongs: [getAllSongs()[0]],
     favoriteSongs: favoriteSongs,
+    searchSongs: [],
+    keySearch: "",
   },
   reducers: {
     getAllSongAgain: (state, action) => {
@@ -97,6 +97,13 @@ export const songDataSlice = createSlice({
         JSON.stringify(state.favoriteSongs)
       );
     },
+    // Search song
+    searchSongs: (state, action) => {
+      state.keySearch = action.payload;
+      state.searchSongs = state.songs.filter((song) =>
+        song.name.includes(action.payload)
+      );
+    },
   },
 });
 
@@ -118,6 +125,7 @@ export const {
   nextRandomSong,
   setFavoriteSong,
   removeFavoriteSong,
+  searchSongs,
 } = songDataSlice.actions;
 
 export default songDataSlice.reducer;

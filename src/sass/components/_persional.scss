@@ -25,6 +25,7 @@
 
   &__tab-bar {
     @include flex(center, center);
+    margin-bottom: 30px;
 
     .tab-bar__item {
       padding: 8px 25px;

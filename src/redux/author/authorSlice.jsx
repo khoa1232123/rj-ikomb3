@@ -5,8 +5,6 @@ let favoriteAuthors = localStorage.getItem("favoriteAuthors")
   ? JSON.parse(localStorage.getItem("favoriteAuthors"))
   : [];
 
-console.log(favoriteAuthors);
-
 export const authorDataSlice = createSlice({
   name: "authorData",
   initialState: {

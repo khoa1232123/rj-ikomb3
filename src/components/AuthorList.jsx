@@ -4,8 +4,6 @@ import AuthorItem from "./AuthorItem";
 
 const AuthorList = () => {
   const authors = getRandomAuthors(5);
-
-  console.log(authors);
   return (
     <div className="author-list">
       {authors.map((item, index) => (
